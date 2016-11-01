@@ -1,0 +1,286 @@
+//原始色调
+@o-blue: #2db7f5;
+@o-l-blue: #57c5f7;
+@o-d-blue: #2baee9;
+@bg-blue: #eaf8fe;
+
+/*color*/
+// 标准色的定义
+@c-white: #fff;
+@c-red: #ff705e; //主色调，用于强调突出的文字、按钮等
+@c-yellow: #ffcd3b; //同为强调，辅助主色
+@c-green: #80d089; //用于完成、可使用
+@c-blue: #7eaef7; //用于链接
+@c-blue-2: #56cfed;
+
+@c-black-1: #000; //同为强调，辅助主色
+@c-black-2: #333; //同为强调，辅助主色
+@c-black-3: #666; //主要文字内容
+@c-grey-1: #999; //用于辅助，次要文字
+@c-grey-2: #aaa; //用于默认文字，次要文字
+@c-grey-3: #ccc; //用于灰色实心icon
+
+@c-line-1: #e7e7e7; //分割线
+@c-line-2: #d7d7d7; //标签描边
+@c-bg-1: #f4f4f3; //背景底色
+@c-bg-2: #f7f7f7; //次一级块底色
+
+/*预定义常量*/
+@max-width: 640PX;
+html[data-rem="375"] {
+  @max-width: 750PX;
+}
+
+/*reset*/
+* {
+  box-sizing: border-box; //所有的元素都是border-box
+  -webkit-box-sizing: border-box;
+}
+html, body, h1, h2, h3, h4, h5, h6, div, dl, dt, dd, ul, ol, li, p,
+input, textarea, select, button, table, caption, th, td, form,
+fieldset, legend, blockquote, pre, hr, figure, menu {
+  margin: 0;
+  padding: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+i, em {
+  font-style: normal;
+}
+a {
+  text-decoration: none;
+  outline: none;
+}
+input, textarea, select, option {
+  font-size: 100%;
+  font-family: inherit;
+  outline: none;
+  border: none;
+}
+button {
+  font-size: 100%;
+  font-family: inherit;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+}
+li {
+  list-style-type: none;
+}
+img {
+  vertical-align: top;
+  border: none;
+}
+div, a, span {
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+//a, img {
+//  -webkit-touch-callout: none; /* 禁止长按链接与图片弹出菜单 */
+//}
+//html, body {
+//  -webkit-user-select: none;   /* 禁止选中文本（如无文本选中需求，此为必选项） */
+//  user-select: none;
+//}
+input, textarea, select, option, button {
+  font-size: 100%;
+  font: inherit;
+  outline: none;
+  border: none;
+  background: none;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+caption, th{
+  font-weight: normal;
+}
+textarea {
+  overflow: auto;
+  resize: none;
+}
+
+//1px的上边框
+.onepxbdt(@color: @c-line-1;) {
+  content: "\20";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: @color;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+//1px的下边框
+.onepxbdb(@color: @c-line-1;) {
+  content: "\20";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: @color;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+}
+//1px的左边框
+.onepxbdl(@color: @c-line-1;) {
+  content: "\20";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background: @color;
+  -webkit-transform: scaleX(0.5);
+  transform: scaleX(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+//1px的右边框
+.onepxbdr(@color: @c-line-1;) {
+  content: "\20";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+  background: @color;
+  -webkit-transform: scaleX(0.5);
+  transform: scaleX(0.5);
+  -webkit-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+}
+//1px的四周边框
+.onepxbd4(@color: @c-line-1;) {
+  content: "\20";
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 200%;
+  height: 200%;
+  border: 1px solid @color;
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+
+// 1px实现的另一个方案
+.border-t(@color: @c-line-1) {
+  background-position: left top;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.5, transparent), color-stop(0.5, @color));
+  background-repeat: repeat-x;
+  -webkit-background-size: 100% 1px;
+}
+.border-b(@color: @c-line-1) {
+  background-position: left bottom;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, transparent), color-stop(0.5, @color));
+  background-repeat: repeat-x;
+  -webkit-background-size: 100% 1px;
+}
+.border-tb(@color: @c-line-1) {
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.5, transparent), color-stop(0.5, @color)), -webkit-gradient(linear, left top, left bottom, color-stop(0.5, transparent), color-stop(0.5, @color));
+  background-position: top, bottom;
+  background-repeat: repeat-x;
+  -webkit-background-size: 100% 1px;
+}
+.border-l(@color: @c-line-1) {
+  background-position: left top;
+  background-image: -webkit-gradient(linear, right top, left top, color-stop(0.5, transparent), color-stop(0.5, @color));
+  background-repeat: repeat-y;
+  -webkit-background-size: 1px 100%;
+}
+.border-r(@color: @c-line-1) {
+  background-position: right top;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(0.5, transparent), color-stop(0.5, @color));
+  background-repeat: repeat-y;
+  -webkit-background-size: 1px 100%;
+}
+//伪元素 图标背景
+.pseudo-element(@w, @h, @bg) {
+  display: block;
+  content: "\20";
+  position: absolute;
+  width: @w;
+  height: @h;
+  background: url(@bg) 0 0 no-repeat;
+  background-size: 100% 100%;
+}
+/*返回顶部*/
+.backtop(@bg:@ico-backtop) {
+  display: none;
+  position: fixed;
+  right: 22PX;
+  bottom: 67PX;
+  z-index: @z-index-7;
+  width: 36PX;
+  height: 36PX;
+  background: url(@bg) 0 0 no-repeat;
+  background-size: 100% 100%;
+}
+
+/*图片资源常量*/
+@ico-back-1: 'http://qnm.hunliji.com/o_1aqo07d2j1bot1t9scq6kql139v7.png';
+@ico-back-2: 'http://qnm.hunliji.com/o_1aqo07fqr2k2kcd1roa1d9s224c.png';
+@down-close: 'http://qnm.hunliji.com/o_1aqjhs3knu1cf9jjpb1v4v7gc7.png';
+@ico-home-1: 'http://qnm.hunliji.com/o_1aqo0ebjv1vf81smm8g91dnu1vc31s.png';
+@ico-home-2: 'http://qnm.hunliji.com/o_1aqo0ebjv1p2t6n7k1eag01gid1t.png';
+@ico-cart-1: 'http://qnm.hunliji.com/o_1aqo0ebjvii75j31lbjkd119nl1d.png';
+@ico-cart-2: 'http://qnm.hunliji.com/o_1aqo0ebjvab3155tsqe13r3mkt1e.png';
+@ico-refresh: 'http://qnm.hunliji.com/o_1aqo4h0jp92n8lo7pq11dq1ndv52.png';
+@ico-alipay: 'http://qnm.hunliji.com/o_1aqo65ib61pvqugclgctl11b858.png';
+@ico-unionpay: 'http://qnm.hunliji.com/o_1aqo65ib79go1iqvs5d55oog159.png';
+@ico-weixinpay: 'http://qnm.hunliji.com/o_1aqtoi4phtnpg4a1i21gnn3kmh.png';
+@ico-radio: 'http://qnm.hunliji.com/o_1aqofovubpo41hfh31gc651lq55i.png';
+@ico-radio-checked: 'http://qnm.hunliji.com/o_1aqofovub1ctn1tc0ebm1e2bcgc5j.png';
+@ico-enter-2: 'http://qnm.hunliji.com/o_1aqo0ebjvkddog1g5r1poj8o51o.png';
+@ico-msg: 'http://qnm.hunliji.com/o_1aqp1lotdh9i4d945r4cn7fs6b.png';
+@ico-phone: 'http://qnm.hunliji.com/o_1aqp1lotdmfcdtltl41kfegan6c.png';
+@ico-success-1: 'http://qnm.hunliji.com/o_1aqom935gab7g5c709e1nhf05r.png';
+@ico-success-2: 'http://qnm.hunliji.com/o_1aqp4eo57120ettu1kpj24o1rj66k.png';
+@ico-close-1: 'http://qnm.hunliji.com/o_1aqro1no515aunrvhvr1838gamc.png';
+@ico-backtop: 'http://qnm.hunliji.com/o_1aup497ej1dja9eg75d11lk16fu7.png';
+
+
+/*z-index 层级规范*/
+@z-index-1: 10;
+@z-index-2: 20;
+@z-index-3: 30;
+@z-index-4: 40;
+@z-index-5: 50;
+@z-index-6: 60;
+@z-index-7: 70; //固定定位的header, footer，download第三层级
+@z-index-8: 80; //loading 第二层级
+@z-index-9: 90; //toast, dialog最高层级
+@z-index-10: 100; //dev开发测试用
+
+//html {
+//  height: 100%;
+//}
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  // background-color: @c-bg-1;
+  min-height: 100vh;
+}
+.hljm_wrapper {
+  width: 100%;
+  max-width: @max-width;
+  margin: 0 auto;
+}
+.clearfix:after {
+  display: block;
+  content: "";
+  clear: both;
+  height: 0;
+}
