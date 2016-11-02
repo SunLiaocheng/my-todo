@@ -5,11 +5,12 @@
 				<i :class="'icono-'+item.icon" :style="item.iconStyle"></i>
 				<span>{{item.name}}</span>
 			</router-link>
-			<router-link :to="item.path" v-if="item.subItems && item.subItems.length>0" class="no-link"  @click.prevent="toggleSub(index)">
+			<div @click="toggleSub(index)" v-if="item.subItems && item.subItems.length>0" class="no-link">
 				<i :class="'icono-'+item.icon" :style="item.iconStyle"></i>
 				<span>{{item.name}}</span>
 				<i class="icono-caretDown down"></i>
-			</router-link>
+			</div>
+			
 			<ul v-show="item.subItems && item.subItems.length>0 && arr_sub[index]">
 				<li v-for="val in item.subItems">
 					<router-link :to="{path:val.path}">{{val.name}}</router-link>

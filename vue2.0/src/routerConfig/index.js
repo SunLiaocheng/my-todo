@@ -2,7 +2,8 @@ module.exports = {
 	routes : [
 		{
 			path: '/',
-			alias: '/V2'
+			alias: '/V2',
+			redirect: '/V2'
 		},
 		{
 			path: '/V2',

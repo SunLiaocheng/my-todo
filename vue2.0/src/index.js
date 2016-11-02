@@ -4,6 +4,7 @@ import VueResource from 'vue-resource'
 import VueRouter from 'vue-router'
 import App from './App.vue'
 import routes from './routerConfig'
+import Store from './vuex/store'
 
 // import Mint from 'mint-ui'
 
@@ -19,6 +20,7 @@ const router = new VueRouter({
 
 const app = new Vue({
   router: router,
+  Store,
   render: h => h(App)
 }).$mount('#app')
 

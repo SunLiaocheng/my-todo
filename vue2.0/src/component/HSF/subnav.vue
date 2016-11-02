@@ -33,11 +33,11 @@
 							icon: 'gplus',
 							subItems: [
 								{
-									path: '/V2/Main',
+									path: '/V2/Main/home1',
 									name: 'home1'
 								},
 								{
-									path: '/V2/Main',
+									path: '/V2/Main/home2',
 									name: 'home2'
 								}
 							],
