@@ -3,7 +3,7 @@ module.exports = {
 	component: require('../../../component/Main/index.vue'),
 	children: [
 		{
-			path: 'type/:type',
+			path: 'main/:type',
 			component: require('../../../component/Main/src/main1.vue')
 		}
 	]

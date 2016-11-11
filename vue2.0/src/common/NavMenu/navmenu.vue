@@ -37,11 +37,14 @@
 				arr_sub: []
 			}
 		},
-		ready () {
+		mounted () {
 			if(this.items.length>0) {
 				this.items.forEach((item,i) => {
 					if(item.subItems && item.subItems.length>0) {
-						this.arr_sub.$set(i,false)
+						this.arr_sub.splice(i,1,false)
+					}
+					if(location.href.indexOf(item.path)>-1) {
+						this.arr_sub.splice(i,1,true)
 					}
 				})
 			}
@@ -50,7 +53,7 @@
 			toggleSub (index) {
 				let item_show = this.arr_sub[index];
 				this.items.forEach((item,i) => {
-					if(item.subItems && item.subItems.length>0) {						
+					if(item.subItems && item.subItems.length>0) {				
 						this.arr_sub.splice(i,1,false)
 					}
 					if(i == index) {

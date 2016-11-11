@@ -28,17 +28,17 @@
 							}
 						},
 						{
-							path: '/V2/main',
+							path: '/V2/Main',
 							name: 'Main',
 							icon: 'gplus',
 							subItems: [
 								{
-									path: '/V2/Main/home1',
-									name: 'home1'
+									path: '/V2/Main/main/1',
+									name: 'main1'
 								},
 								{
-									path: '/V2/Main/home2',
-									name: 'home2'
+									path: '/V2/Main/main/2',
+									name: 'main2'
 								}
 							],
 						}
